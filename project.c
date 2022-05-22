@@ -9,7 +9,7 @@
 /**
  * _printf - prints like printf
  * @format: the specification
- * Return: 0 when right
+ * Return: Always 0
  */
 int _printf(const char *format, ...)
 {
@@ -31,16 +31,22 @@ int _printf(const char *format, ...)
 			if (*format == 's')
 			{
 				str = va_arg(argums, char *);
-				lenstr = strlen(str);
-				count += write(1, str, lenstr);
-				format++;
+				if (str != NULL)
+				{
+					lenstr = strlen(str);
+					count += write(1, str, lenstr);
+					format++;
+				}
 			}
 			else if (*format == 'c')
 			{
 				i = va_arg(argums, int);
-				new = (char)i;
-				count += write(1, &new, 1);
-				format++;
+				if (i)
+				{
+					new = (char)i;
+					count += write(1, &new, 1);
+					format++;
+				}
 			}
 		}
 		else
