@@ -1,0 +1,26 @@
+.\" Manpage for _printf
+.TH man 8 "22 May 2022"
+.SH NAME
+_printf-format and write a string, character or integer to stdout library
+.SH SYNOPSIS
+#include "main.h"
+.br
+#include <stdarg.h>
+.br
+#include <stdlib.h>
+.br
+int printf(const char *format,...)
+
+.SH DESCRIPTION
+The function _printf() produces output and send to stdout
+
+.ss return value
+.br
+function returns 0 when success
+if an output error is encounted, a negative value is returned
+
+.ss The format String
+.br
+This page was created with help of ALX, few hours before deadline
+.SH AUTHORS
+Seth Asamoah and Brain Machiestay-Dzregah
