@@ -32,5 +32,6 @@ int _printf(const char *format, ...)
 			printf("%c", *(format + i));
 		i++;
 	}
+	va_end(argums);
 	return (count);
 }
