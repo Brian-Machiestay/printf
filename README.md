@@ -1,2 +1,3 @@
 This is the printf project
-Contributions by seth
+Contributions by BRAIN AND SETH
+Desing Printf Clone
