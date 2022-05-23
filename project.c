@@ -69,11 +69,8 @@ int _printf(const char *format, ...)
 			else if (*format == 'c')
 			{
 				i = va_arg(argums, int);
-				if (i)
-				{
-					count += converti(i);
-					format++;
-				}
+				count += converti(i);
+				format++;
 			}
 		}
 		else
