@@ -9,9 +9,10 @@
 /**
  * convertstr - check the code
  * @s: the str to convert
+ * @format: the specifier
  * Return: an int
  */
-int convertstr(char *s)
+const char *convertstr(char *s, const char *format)
 {
 	int lenstr = 0;
 	int count = 0;
@@ -20,15 +21,17 @@ int convertstr(char *s)
 	{
 		lenstr = strlen(s);
 		count += write(1, s, lenstr);
+		format++;
 	}
-	return (count);
+	return (format);
 }
 /**
  * converti - check the code
  * @i: the char int  to convert
+ * @format: the specifier
  * Return: an int
  */
-int converti(int i)
+const char *converti(int i, const char *format)
 {
 	int count = 0;
 	int new;
@@ -37,8 +40,9 @@ int converti(int i)
 	{
 		new = (char)i;
 		count += write(1, &new, 1);
+		format++;
 	}
-	return (count);
+	return (format);
 }
 /**
  * _printf - prints like printf
@@ -52,6 +56,7 @@ int _printf(const char *format, ...)
 	int i = 0;
 	int len = strlen(format);
 	char *str;
+	int lenstr;
 
 	va_start(argums, format);
 
@@ -63,14 +68,15 @@ int _printf(const char *format, ...)
 			if (*format == 's')
 			{
 				str = va_arg(argums, char *);
-				count += convertstr(str);
-				format++;
+				lenstr = strlen(str);
+				format = convertstr(str, format);
+				count += lenstr;
 			}
 			else if (*format == 'c')
 			{
 				i = va_arg(argums, int);
-				count += converti(i);
-				format++;
+				format = converti(i, format);
+				count++;
 			}
 		}
 		else
