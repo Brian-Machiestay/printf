@@ -21,5 +21,5 @@ int centhandler(va_list ags, const char *ptr)
 
 	if (*ptr == 'c')
 		return (charprint(ags));
-	return (0);
+	return (write(1, "%", 1));
 }
