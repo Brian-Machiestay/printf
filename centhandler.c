@@ -14,6 +14,8 @@
  */
 int centhandler(va_list ags, const char *ptr)
 {
+	if (*ptr == '%')
+		return (write(1, "%", 1));
 	if (*ptr == 's')
 		return (stringprint(ags));
 
