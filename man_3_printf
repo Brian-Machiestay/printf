@@ -1,5 +1,5 @@
-.\" Manpage for _printf
-.TH man 8 "22 May 2022"
+.\" Man page for _printf
+.TH man 8 "01 June 2022"
 .SH NAME
 _printf-format and write a string, character or integer to stdout library
 .SH SYNOPSIS
