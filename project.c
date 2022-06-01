@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 
 	va_start(ags, format);
 	if (ptr == NULL)
-		return (0);
+		return (-1);
 	count = strlen(ptr);
 	while (count > 0)
 	{
@@ -28,6 +28,7 @@ int _printf(const char *format, ...)
 		{
 			if (count == 1)
 			{
+				written = -1;
 				count--;
 				continue;
 			}
