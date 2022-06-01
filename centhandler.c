@@ -12,14 +12,25 @@
  * @ptr: the specifier
  * Return: the # of bytes written
  */
-int centhandler(va_list ags, const char *ptr)
+int centhandler(va_list ags, const char **ptr)
 {
-	if (*ptr == '%')
+	if (*((*ptr) + 1) == '%')
+	{
+		(*ptr)++;
 		return (write(1, "%", 1));
-	if (*ptr == 's')
+	}
+	if (*((*ptr) + 1) == 's')
+	{
+		(*ptr)++;
 		return (stringprint(ags));
+	}
 
-	if (*ptr == 'c')
+	if (*((*ptr) + 1) == 'c')
+	{
+		(*ptr)++;
 		return (charprint(ags));
-	return (write(1, "%", 1));
+	}
+	write(1, *ptr, 2);
+	(*ptr)++;
+	return (2);
 }

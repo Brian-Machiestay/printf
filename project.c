@@ -14,29 +14,32 @@
 int _printf(const char *format, ...)
 {
 	va_list ags;
+	int count = 0;
 	int written = 0;
 	const char *ptr = format;
-	int len;
 
 	va_start(ags, format);
 	if (ptr == NULL)
 		return (0);
-
-	len = strlen(format);
-	while (len > 0)
+	count = strlen(ptr);
+	while (count > 0)
 	{
 		if (*ptr == '%')
 		{
+			if (count == 1)
+			{
+				count--;
+				continue;
+			}
+			count--;
+			written += centhandler(ags, &ptr);
 			ptr++;
-			len--;
-			written += centhandler(ags, ptr);
-			ptr++;
-			len--;
+			count--;
 			continue;
 		}
 		written += write(1, ptr, 1);
 		ptr++;
-		len--;
+		count--;
 	}
 	return (written);
 }
