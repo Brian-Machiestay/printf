@@ -9,7 +9,7 @@
 /**
  * _printf - prints like printf
  * @format: the specification
- * Return: Always 0 when success
+ * Return: Always 0 when successful
  */
 int _printf(const char *format, ...)
 {
