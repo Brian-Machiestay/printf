@@ -16,15 +16,15 @@ int _printf(const char *format, ...)
 	va_list ags;
 	int count = 0;
 	int written = 0;
-	const char *ptr = format;
+	const char *ptr_cur = format;
 
 	va_start(ags, format);
-	if (ptr == NULL)
+	if (ptr_cur == NULL)
 		return (0);
-	count = strlen(ptr);
+	count = strlen(ptr_cur);
 	while (count > 0)
 	{
-		if (*ptr == '%')
+		if (*ptr_cur == '%')
 		{
 			if (count == 1)
 			{
@@ -32,13 +32,13 @@ int _printf(const char *format, ...)
 				continue;
 			}
 			count--;
-			written += centhandler(ags, &ptr);
-			ptr++;
+			written += centhandler(ags, &ptr_cur);
+			ptr_cur++;
 			count--;
 			continue;
 		}
-		written += write(1, ptr, 1);
-		ptr++;
+		written += write(1, ptr_cur, 1);
+		ptr_cur++;
 		count--;
 	}
 	return (written);
